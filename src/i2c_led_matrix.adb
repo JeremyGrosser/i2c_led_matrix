@@ -90,6 +90,9 @@ begin
          else
             I := I + 1;
          end if;
+      elsif Port.Status.Is_Error then
+         Port.Clear_Error;
+         Started := False;
       end if;
    end loop;
 end I2c_Led_Matrix;
