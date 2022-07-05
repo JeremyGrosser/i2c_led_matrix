@@ -10,7 +10,8 @@ executables = ["i2c_led_matrix"]
 [[depends-on]]
 pico_bsp = "^2.0.0-alpha"
 [[pins]]
-pico_bsp = { path='../pico_bsp' }
+pico_bsp = { url='https://github.com/JeremyGrosser/pico_bsp' }
+rp2040_hal = { url='https://github.com/JeremyGrosser/rp2040_hal#i2c' }
 
 [gpr-set-externals]
 RP2040_HAL_BUILD_MODE = "debug"
