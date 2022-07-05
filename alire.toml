@@ -1,0 +1,16 @@
+name = "i2c_led_matrix"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+
+executables = ["i2c_led_matrix"]
+[[depends-on]]
+pico_bsp = "^2.0.0-alpha"
+[[pins]]
+pico_bsp = { path='../pico_bsp' }
+
+[gpr-set-externals]
+RP2040_HAL_BUILD_MODE = "debug"
