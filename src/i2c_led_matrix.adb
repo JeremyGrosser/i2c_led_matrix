@@ -4,7 +4,6 @@
 --  SPDX-License-Identifier: BSD-3-Clause
 --
 with RP2040_SVD.I2C;
-with HAL.I2C;
 with RP.I2C;
 
 with HAL.SPI;
@@ -39,8 +38,8 @@ procedure I2c_Led_Matrix is
        Delays  => RP.Device.Timer'Access,
        Length  => 4);
 
-   use type HAL.I2C.I2C_Status;
-   Status   : HAL.I2C.I2C_Status;
+   use type RP.I2C.I2C_Status;
+   Status   : RP.I2C.I2C_Status;
    Deadline : Time;
    Data     : UInt8_Array (1 .. M.Data'Size / 8)
       with Address => M.Data'Address;
@@ -85,12 +84,12 @@ begin
          Started := False;
       elsif Port.Read_Ready then
          Port.Read (Data (I), Status, Deadline);
-         if Status /= HAL.I2C.Ok then
+         if Status /= RP.I2C.Ok then
             Started := False;
          else
             I := I + 1;
          end if;
-      elsif Port.Status.Is_Error then
+      elsif Port.State.Is_Error then
          Port.Clear_Error;
          Started := False;
       end if;
